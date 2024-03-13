@@ -1,21 +1,4 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  },
   "products": [
     {
       "name": "Dam di hoc",
@@ -36,8 +19,8 @@
       "id": 3
     },
     {
-      "name": "Dam di hoc",
-      "price": 2020000,
+      "name": "Dam di hoc mua he",
+      "price": 3000,
       "description": "Mo ta chi tiet san pham",
       "id": 4
     },
@@ -70,6 +53,24 @@
     },
     {
       "id": 10
+    },
+    {
+      "name": "Dam di hoc",
+      "price": 2020000,
+      "description": "Mo ta chi tiet san pham",
+      "id": 11
+    },
+    {
+      "name": "Dam di hoc",
+      "price": 2020000,
+      "description": "Mo ta chi tiet san pham",
+      "id": 12
+    },
+    {
+      "name": "Dam di bar",
+      "price": 100,
+      "description": "Mo ta chi tiet san pham",
+      "id": 13
     }
   ]
 }
