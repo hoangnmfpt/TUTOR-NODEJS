@@ -10,3 +10,6 @@
 10. Error handling
 11. Authentication và Authorization (jwt, bcrypt)
 12. Deploy (Mongodb Atlas - S3(AWS), render, Netlify)
+13. Upload và remove file, ảnh, media
+14. Socket.io
+15. Testing

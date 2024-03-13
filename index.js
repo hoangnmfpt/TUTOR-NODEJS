@@ -82,6 +82,25 @@ app.put("/products/:id", async (req, res) => {
     });
   }
 });
+
+app.delete("/products/:id", async (req, res) => {
+  try {
+    const { status } = await instance.delete(`/products/${req.params.id}`);
+    console.log(status);
+    if (status != 200) {
+      return res.status(400).json({ message: "Xoa san pham that bai!" });
+    }
+    return res.status(200).json({
+      message: "Xoa san pham thanh cong!",
+      data,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      name: error.name,
+      message: error.message,
+    });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

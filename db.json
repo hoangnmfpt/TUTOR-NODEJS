@@ -8,24 +8,6 @@
     },
     {
       "name": "Dam di hoc",
-      "price": 200,
-      "description": "Mo ta chi tiet san pham",
-      "id": 2
-    },
-    {
-      "name": "Dam di hoc",
-      "price": 2020000,
-      "description": "Mo ta chi tiet san pham",
-      "id": 3
-    },
-    {
-      "name": "Dam di hoc mua he",
-      "price": 3000,
-      "description": "Mo ta chi tiet san pham",
-      "id": 4
-    },
-    {
-      "name": "Dam di hoc",
       "price": 2020000,
       "description": "Mo ta chi tiet san pham",
       "id": 5
