@@ -1,4 +1,5 @@
 import axios from "axios";
+import Product from "../models/Product.js";
 
 const instance = axios.create({
   baseURL: "http://localhost:3000",
@@ -9,7 +10,8 @@ const instance = axios.create({
 
 export const getProducts = async (req, res) => {
   try {
-    const { data } = await instance.get("/products");
+    // const { data } = await instance.get("/products");
+    const data = await Product.find({});
     if (data && data.length > 0) {
       return res.status(200).json({
         message: "Lay danh sach san pham thanh cong!",
@@ -26,7 +28,9 @@ export const getProducts = async (req, res) => {
 };
 export const createProduct = async (req, res) => {
   try {
-    const { data } = await instance.post("/products", req.body);
+    // const { data } = await instance.post("/products", req.body);
+    const data = await Product.create(req.body);
+    console.log(data);
     if (!data) {
       return res.status(400).json({ message: "Them san pham that bai!" });
     }
@@ -44,7 +48,8 @@ export const createProduct = async (req, res) => {
 
 export const getProductById = async (req, res) => {
   try {
-    const { data } = await instance.get(`/products/${req.params.id}`);
+    // const { data } = await instance.get(`/products/${req.params.id}`);
+    const data = await Product.findById(req.params.id);
     if (!data) {
       return res.status(400).json({ message: "Lay san pham that bai!" });
     }
@@ -62,7 +67,10 @@ export const getProductById = async (req, res) => {
 
 export const updateProductById = async (req, res) => {
   try {
-    const { data } = await instance.put(`/products/${req.params.id}`, req.body);
+    // const { data } = await instance.put(`/products/${req.params.id}`, req.body);
+    const data = await Product.findByIdAndUpdate(`${req.params.id}`, req.body, {
+      new: true,
+    });
     if (!data) {
       return res.status(400).json({ message: "Cap nhat san pham that bai!" });
     }
@@ -80,14 +88,20 @@ export const updateProductById = async (req, res) => {
 
 export const removeProductById = async (req, res) => {
   try {
-    const { status } = await instance.delete(`/products/${req.params.id}`);
-    console.log(status);
-    if (status != 200) {
-      return res.status(400).json({ message: "Xoa san pham that bai!" });
+    // const { status } = await instance.delete(`/products/${req.params.id}`);
+    const data = await Product.findByIdAndRemove(req.params.id);
+    // console.log(status);
+    // if (status != 200) {
+    //   return res.status(400).json({ message: "Xoa san pham that bai!" });
+    // }
+    if (data) {
+      return res.status(200).json({
+        message: "Xoa san pham thanh cong!",
+        data,
+      });
     }
-    return res.status(200).json({
-      message: "Xoa san pham thanh cong!",
-      data,
+    return res.status(400).json({
+      message: "Xoa san pham that bai!",
     });
   } catch (error) {
     return res.status(500).json({
