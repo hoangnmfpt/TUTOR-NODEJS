@@ -1,12 +1,4 @@
-import axios from "axios";
 import Product from "../models/Product.js";
-
-const instance = axios.create({
-  baseURL: "http://localhost:3000",
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
 
 export const getProducts = async (req, res) => {
   try {
@@ -86,6 +78,7 @@ export const updateProductById = async (req, res) => {
   }
 };
 
+// ! Xoá cứng! Không dùng
 export const removeProductById = async (req, res) => {
   try {
     // const { status } = await instance.delete(`/products/${req.params.id}`);
@@ -102,6 +95,36 @@ export const removeProductById = async (req, res) => {
     }
     return res.status(400).json({
       message: "Xoa san pham that bai!",
+    });
+  } catch (error) {
+    return res.status(500).json({
+      name: error.name,
+      message: error.message,
+    });
+  }
+};
+
+// ! Xoá mềm
+
+export const softRemoveProductById = async (req, res) => {
+  try {
+    // const { data } = await instance.put(`/products/${req.params.id}`, req.body);
+    const data = await Product.findByIdAndUpdate(
+      `${req.params.id}`,
+      {
+        hide: true,
+      },
+      {
+        new: true,
+      }
+    );
+    //! findByIdAndUpdate !== findByIdAndRemove
+    if (!data) {
+      return res.status(400).json({ message: "Cap nhat san pham that bai!" });
+    }
+    return res.status(201).json({
+      message: "Cap nhat san pham thanh cong!",
+      data,
     });
   } catch (error) {
     return res.status(500).json({

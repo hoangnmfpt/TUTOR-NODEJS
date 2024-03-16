@@ -6,9 +6,11 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/ecommerce").then(() => {
-  console.log("Connected to MongoDB!");
-});
+mongoose
+  .connect("mongodb://localhost:27017/nodejs-tutor-spring-2024")
+  .then(() => {
+    console.log("Connected to MongoDB!");
+  });
 
 app.use("/api", router);
 
