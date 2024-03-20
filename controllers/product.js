@@ -108,6 +108,7 @@ export const removeProductById = async (req, res) => {
 
 export const softRemoveProductById = async (req, res) => {
   try {
+    // const params = req.params;
     // const { data } = await instance.put(`/products/${req.params.id}`, req.body);
     const data = await Product.findByIdAndUpdate(
       `${req.params.id}`,

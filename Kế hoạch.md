@@ -12,14 +12,15 @@
 10. Error handling
 11. Validation
 12. Authentication và Authorization (json web token, bcrypt)
-13. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
-14. Upload và remove file, ảnh, media
+13. Reset password, email verification(node mailer), refresh token
+14. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
+15. Upload và remove file, ảnh, media
 
 # Nodejs - advanced
 
 1. Logging
-2. Socket.io
-3. Testing
+2. Socket.io (websocket)
+3. Testing (mocha - chai)
 4. Performance
 5. Security
 6. Caching
