@@ -10,8 +10,8 @@
 8. Mongoose - CRUD với MongoDB - Buổi 2 - Done
 9. Middleware
 10. Error handling
-11. Validation
-12. Authentication và Authorization (json web token, bcrypt)
+11. Validation - 50%
+12. Authentication và Authorization (json web token, bcrypt) - 50%
 13. Reset password, email verification(node mailer), refresh token
 14. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
 15. Upload và remove file, ảnh, media
