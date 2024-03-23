@@ -15,6 +15,6 @@ productRouter.post("/", createProduct);
 productRouter.get("/:id", getProductById);
 productRouter.put("/update/:id", updateProductById);
 productRouter.put("/hide/:id", softRemoveProductById);
-productRouter.delete("/:id", removeProductById);
+productRouter.delete("/delete/:id", removeProductById);
 
 export default productRouter;

@@ -3,7 +3,7 @@ import { loginSchema, registerSchema } from "../validations/auth";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-export const register = async (req, res) => {
+export const register = async (req, res, next) => {
   try {
     /**
      * 1. Kiem tra du lieu dau vao
@@ -14,13 +14,6 @@ export const register = async (req, res) => {
      */
 
     const { email, password } = req.body;
-
-    // if (email === "" || password === "") {
-    //   return res
-    //     .status(400)
-    //     .json({ message: "Email va password khong duoc de trong!" });
-    // }
-
     const { error } = registerSchema.validate(req.body, {
       abortEarly: false,
     });
@@ -49,14 +42,11 @@ export const register = async (req, res) => {
       user,
     });
   } catch (error) {
-    return res.status(500).json({
-      name: error.name,
-      message: error.message,
-    });
+    next(error);
   }
 };
 
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   try {
     /**
      * ? B1: Kiem tra email va password
@@ -101,9 +91,6 @@ export const login = async (req, res) => {
       userExist,
     });
   } catch (error) {
-    return res.status(500).json({
-      name: error.name,
-      message: error.message,
-    });
+    next(error);
   }
 };
