@@ -8,9 +8,9 @@
 6. Routes - MVC Design Pattern - Buổi 2 - Done
 7. MongoDB - So sánh SQL và noSQL - Buổi 2 - 30%
 8. Mongoose - CRUD với MongoDB - Buổi 2 - Done
-9. Middleware
-10. Error handling
-11. Validation - 50%
+9. Middleware - Lesson 5 - Done
+10. Error handling - Lesson 5 - Done
+11. Validation - Done
 12. Authentication và Authorization (json web token, bcrypt) - 50%
 13. Reset password, email verification(node mailer), refresh token
 14. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
