@@ -77,19 +77,20 @@ export const updateProductById = async (req, res, next) => {
 export const removeProductById = async (req, res, next) => {
   try {
     const data = await Product.findByIdAndDelete(req.params.id);
+    console.log(data);
     if (data) {
       return res.status(200).json({
-        message: errorMessages.DELETE_PRODUCT_SUCCESS,
+        message: successMessages.DELETE_PRODUCT_SUCCESS,
         data,
       });
     }
+    return res.status(400).json({ message: errorMessages.DELETE_FAIL });
   } catch (error) {
     next(error);
   }
 };
 
 // ! Xoá mềm
-
 export const softRemoveProductById = async (req, res, next) => {
   try {
     const data = await Product.findByIdAndUpdate(
