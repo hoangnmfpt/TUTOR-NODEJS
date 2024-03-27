@@ -9,6 +9,8 @@ export const errorHandler = (err, req, res) => {
   });
 };
 
+// ! monitoring
+
 export const errorHandlerNotFound = (req, res, next) => {
   const error = new Error("Not found!");
   error.status = 404;

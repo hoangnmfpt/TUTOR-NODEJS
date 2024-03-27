@@ -1,4 +1,7 @@
+import { errorMessages, successMessages } from "../constants/message.js";
 import Product from "../models/Product.js";
+import { validBody } from "../utils/validBody.js";
+import productSchema from "../validations/product.js";
 
 export const getProducts = async (req, res, next) => {
   try {
@@ -16,6 +19,10 @@ export const getProducts = async (req, res, next) => {
 };
 export const createProduct = async (req, res, next) => {
   try {
+    const resultValid = validBody(req.body, productSchema);
+    if (resultValid) {
+      return res.status(400).json({ message: resultValid.errors });
+    }
     const data = await Product.create(req.body);
     console.log(data);
     if (!data) {
@@ -47,14 +54,18 @@ export const getProductById = async (req, res, next) => {
 
 export const updateProductById = async (req, res, next) => {
   try {
+    const resultValid = validBody(req.body, productSchema);
+    if (resultValid) {
+      return res.status(400).json({ message: resultValid.errors });
+    }
     const data = await Product.findByIdAndUpdate(`${req.params.id}`, req.body, {
       new: true,
     });
     if (!data) {
-      return res.status(400).json({ message: "Cap nhat san pham that bai!" });
+      return res.status(400).json({ message: errorMessages.UPDATE_FAIL });
     }
     return res.status(201).json({
-      message: "Cap nhat san pham thanh cong!",
+      message: successMessages.UPDATE_SUCCESS,
       data,
     });
   } catch (error) {
@@ -68,7 +79,7 @@ export const removeProductById = async (req, res, next) => {
     const data = await Product.findByIdAndDelete(req.params.id);
     if (data) {
       return res.status(200).json({
-        message: "Xoa san pham thanh cong!",
+        message: errorMessages.DELETE_PRODUCT_SUCCESS,
         data,
       });
     }
