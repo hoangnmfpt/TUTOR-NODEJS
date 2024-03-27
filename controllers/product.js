@@ -24,7 +24,7 @@ export const createProduct = async (req, res, next) => {
       return res.status(400).json({ message: resultValid.errors });
     }
     const data = await Product.create(req.body);
-    console.log(data);
+
     if (!data) {
       return res.status(400).json({ message: "Them san pham that bai!" });
     }
@@ -77,7 +77,6 @@ export const updateProductById = async (req, res, next) => {
 export const removeProductById = async (req, res, next) => {
   try {
     const data = await Product.findByIdAndDelete(req.params.id);
-    console.log(data);
     if (data) {
       return res.status(200).json({
         message: successMessages.DELETE_PRODUCT_SUCCESS,

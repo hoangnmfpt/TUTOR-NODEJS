@@ -60,7 +60,6 @@ export const login = async (req, res, next) => {
     }
 
     // ? B3: Kiem tra password co khop khong?
-    console.log(await comparePassword(password, userExist.password));
     if (!(await comparePassword(password, userExist.password))) {
       return res.status(400).json({ message: errorMessages.INVALID_PASSWORD });
     }

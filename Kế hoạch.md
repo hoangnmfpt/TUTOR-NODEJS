@@ -11,7 +11,7 @@
 9. Middleware - Lesson 5 - Done
 10. Error handling - Lesson 5 - Done
 11. Validation - Done
-12. Authentication và Authorization (json web token, bcrypt) - 50%
+12. Authentication và Authorization (json web token, bcrypt) - 100%
 13. Reset password, email verification(node mailer), refresh token
 14. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
 15. Upload và remove file, ảnh, media
