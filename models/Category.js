@@ -18,10 +18,7 @@ const categorySchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    products: {
-      type: [String],
-      default: [],
-    },
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }],
   },
   {
     timestamps: true,

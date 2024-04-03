@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import { errorMessages, successMessages } from "../constants/message";
 import User from "../models/User";
 import { comparePassword, hashPassword } from "../utils/hashPassword";
+import { generateToken } from "../utils/jwt";
 dotenv.config({ path: "./.env.local" });
 const { JWT_SECRET } = process.env;
 
@@ -54,9 +55,7 @@ export const login = async (req, res, next) => {
     }
 
     // ? B4: Tao token -> JWT (JSON Web Token)
-    const token = jwt.sign({ _id: userExist._id }, JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const token = generateToken({ _id: userExist._id }, "10d");
 
     // ? B5: Tra ve token cho client
     userExist.password = undefined;

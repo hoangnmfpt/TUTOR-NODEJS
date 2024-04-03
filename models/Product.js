@@ -34,8 +34,9 @@ const productSchema = new mongoose.Schema(
       default: "No brand",
     },
     category: {
-      type: String,
-      default: null,
+      type: mongoose.Schema.Types.ObjectId,
+      default: "660d72178414e74a3907abdd",
+      ref: "Category",
     },
     thumbnail: {
       type: String,
