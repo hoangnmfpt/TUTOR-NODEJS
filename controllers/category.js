@@ -1,5 +1,6 @@
 import { errorMessages, successMessages } from "../constants/message.js";
 import Category from "../models/Category.js";
+import Product from "../models/Product.js";
 
 export const getCategories = async (req, res, next) => {
   try {
