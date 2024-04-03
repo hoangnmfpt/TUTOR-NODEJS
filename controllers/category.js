@@ -76,6 +76,13 @@ export const removeCategoryById = async (req, res, next) => {
     }
 
     // ! cap nhat lại san pham cho danh muc bị xoá
+    const productsToUpdate = await Product.find({ category: req.params.id });
+    await Promise.all(
+      productsToUpdate.map(async (product) => {
+        product.category = "660d72178414e74a3907abdd";
+        await product.save();
+      })
+    );
 
     const data = await Category.findByIdAndDelete(req.params.id);
     if (data) {
