@@ -35,7 +35,7 @@ const productSchema = new mongoose.Schema(
     },
     category: {
       type: String,
-      default: "No category",
+      default: null,
     },
     thumbnail: {
       type: String,

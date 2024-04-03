@@ -13,7 +13,7 @@
 11. Validation - Done
 12. Authentication và Authorization (json web token, bcrypt) - 100%
 13. Reset password, email verification(node mailer), refresh token
-14. Deploy (Mongodb Atlas - S3(AWS), render, Netlify), environment variables
+14. Deploy (Mongodb Atlas - S3(AWS), render.com), environment variables - 70%
 15. Upload và remove file, ảnh, media
 
 # Nodejs - advanced

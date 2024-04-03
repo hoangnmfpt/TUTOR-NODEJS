@@ -1,21 +1,14 @@
+import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import { errorMessages, successMessages } from "../constants/message";
 import User from "../models/User";
 import { comparePassword, hashPassword } from "../utils/hashPassword";
-import { validBody } from "../utils/validBody";
-import { loginSchema, registerSchema } from "../validations/auth";
-import dotenv from "dotenv";
 dotenv.config({ path: "./.env.local" });
 const { JWT_SECRET } = process.env;
 
 export const register = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const resultValid = validBody(req.body, registerSchema);
-    if (resultValid) {
-      return res.status(400).json({ message: resultValid.errors });
-    }
-
     // ? B2: Kiem tra email da ton tai chua?
     const checkEmail = await User.findOne({ email });
     if (checkEmail) {
@@ -48,10 +41,6 @@ export const login = async (req, res, next) => {
      */
 
     const { email, password } = req.body;
-    const resultValid = validBody(req.body, loginSchema);
-    if (resultValid) {
-      return res.status(400).json({ message: resultValid.errors });
-    }
 
     // ? B2: Kiem tra email co ton tai khong?
     const userExist = await User.findOne({ email });
@@ -65,7 +54,7 @@ export const login = async (req, res, next) => {
     }
 
     // ? B4: Tao token -> JWT (JSON Web Token)
-    const token = jwt.sign({ id: userExist._id }, JWT_SECRET, {
+    const token = jwt.sign({ _id: userExist._id }, JWT_SECRET, {
       expiresIn: "1d",
     });
 
@@ -74,7 +63,7 @@ export const login = async (req, res, next) => {
     return res.status(201).json({
       message: successMessages.LOGIN_SUCCESS,
       token,
-      userExist,
+      user: userExist,
     });
   } catch (error) {
     next(error);

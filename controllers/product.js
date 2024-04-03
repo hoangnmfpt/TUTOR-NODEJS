@@ -1,7 +1,5 @@
 import { errorMessages, successMessages } from "../constants/message.js";
 import Product from "../models/Product.js";
-import { validBody } from "../utils/validBody.js";
-import productSchema from "../validations/product.js";
 
 export const getProducts = async (req, res, next) => {
   try {
@@ -19,12 +17,7 @@ export const getProducts = async (req, res, next) => {
 };
 export const createProduct = async (req, res, next) => {
   try {
-    const resultValid = validBody(req.body, productSchema);
-    if (resultValid) {
-      return res.status(400).json({ message: resultValid.errors });
-    }
     const data = await Product.create(req.body);
-
     if (!data) {
       return res.status(400).json({ message: "Them san pham that bai!" });
     }
@@ -54,10 +47,6 @@ export const getProductById = async (req, res, next) => {
 
 export const updateProductById = async (req, res, next) => {
   try {
-    const resultValid = validBody(req.body, productSchema);
-    if (resultValid) {
-      return res.status(400).json({ message: resultValid.errors });
-    }
     const data = await Product.findByIdAndUpdate(`${req.params.id}`, req.body, {
       new: true,
     });
