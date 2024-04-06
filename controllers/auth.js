@@ -1,11 +1,8 @@
 import dotenv from "dotenv";
-import jwt from "jsonwebtoken";
-import { errorMessages, successMessages } from "../constants/message";
-import User from "../models/User";
-import { comparePassword, hashPassword } from "../utils/hashPassword";
-import { generateToken } from "../utils/jwt";
-dotenv.config({ path: "./.env.local" });
-const { JWT_SECRET } = process.env;
+import { errorMessages, successMessages } from "../constants/message.js";
+import User from "../models/User.js";
+import { comparePassword, hashPassword } from "../utils/hashPassword.js";
+import { generateToken } from "../utils/jwt.js";
 
 export const register = async (req, res, next) => {
   try {

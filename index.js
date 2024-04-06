@@ -13,7 +13,6 @@ app.use(express.json());
 app.use("/api", router);
 
 connect();
-// Error handling 404
 app.use(errorHandlerNotFound, errorHandler);
 
 app.listen(PORT || 8000, () => {

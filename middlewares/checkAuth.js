@@ -1,6 +1,6 @@
-import { errorMessages } from "../constants/message";
-import User from "../models/User";
-import { verifyToken } from "../utils/jwt";
+import { errorMessages } from "../constants/message.js";
+import User from "../models/User.js";
+import { verifyToken } from "../utils/jwt.js";
 
 export const checkAuth = async (req, res, next) => {
   try {

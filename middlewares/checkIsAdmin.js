@@ -1,4 +1,4 @@
-import { errorMessages } from "../constants/message";
+import { errorMessages } from "../constants/message.js";
 
 export const checkIsAdmin = async (req, res, next) => {
   try {
